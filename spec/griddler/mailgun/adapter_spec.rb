@@ -98,6 +98,11 @@ describe Griddler::Mailgun::Adapter, '.normalize_params' do
     expect(normalized_params[:bcc]).to eq []
   end
 
+  it 'includes recipient as original_recipient' do
+    normalized_params = Griddler::Mailgun::Adapter.normalize_params(default_params)
+    expect(normalized_params[:original_recipient]).to eq "johndoe@example.com"
+  end
+
   def upload_1
     @upload_1 ||= ActionDispatch::Http::UploadedFile.new(
       filename: 'photo1.jpg',

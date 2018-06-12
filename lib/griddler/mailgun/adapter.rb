@@ -22,7 +22,8 @@ module Griddler
           text: params['body-plain'],
           html: params['body-html'],
           attachments: attachment_files,
-          headers: serialized_headers
+          headers: serialized_headers,
+          original_recipient: params[:recipient]
         }
       end
 
